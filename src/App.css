@@ -1,0 +1,355 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Add for insert coin page */
+.insert-coin-bg {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: url('/Pink%20aura%20wallpaper.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.camera-box {
+  position: relative;
+  z-index: 1;
+  width: 480px;
+  height: 360px;
+  max-width: 90vw;
+  max-height: 70vh;
+  background: white;
+  border-radius: 1.2rem;
+  border: 3px solid black;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.water-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 100%;
+  background: #ffc4e6;
+  opacity: 0.85;
+  z-index: 1;
+  border-top-left-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
+  transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  pointer-events: none;
+}
+
+.water-fill-animate {
+  width: 100%;
+  height: 100%;
+}
+
+.camera-box > *:not(.water-fill) {
+  position: relative;
+  z-index: 2;
+}
+
+.insert-coin-title {
+  width: 100%;
+  text-align: center;
+  font-family: 'Covered By Your Grace', cursive;
+  font-size: 2.5rem;
+  color: #d72660;
+  margin-bottom: 2rem;
+  margin-top: 0;
+  letter-spacing: 0.05em;
+  text-shadow:
+    -1px -1px 0 #fff,
+     1px -1px 0 #fff,
+    -1px  1px 0 #fff,
+     1px  1px 0 #fff,
+     0px  1px 0 #fff,
+     1px  0px 0 #fff,
+    -1px  0px 0 #fff,
+     0px -1px 0 #fff;
+}
+
+.center-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.coin-inserter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.coin-slot {
+  width: 80px;
+  height: 16px;
+  background: #222;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  border: 2px solid #555;
+  cursor: pointer;
+  transition: background 0.2s, border 0.2s;
+}
+
+.coin-label {
+  font-family: 'Covered By Your Grace', cursive;
+  font-size: 1.3rem;
+  color: #888;
+  margin-top: 0;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.coin-label:hover {
+  color: #d72660;
+}
+
+.coin-image {
+  display: block;
+  margin: 0 auto 10px auto;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s;
+}
+
+.coin-inserting {
+  transform: translateY(60px) scale(0.7);
+  opacity: 0;
+}
+
+.start-message {
+  font-family: 'Covered By Your Grace', cursive;
+  font-size: 2.5rem;
+  color: #d72660;
+  text-align: center;
+  margin-top: 2rem;
+  text-shadow:
+    -1px -1px 0 #fff,
+     1px -1px 0 #fff,
+    -1px  1px 0 #fff,
+     1px  1px 0 #fff,
+     0px  1px 0 #fff,
+     1px  0px 0 #fff,
+    -1px  0px 0 #fff,
+     0px -1px 0 #fff;
+}
+
+.start-message.pressable {
+  font-family: 'Covered By Your Grace', cursive;
+  font-size: 1.7rem;
+  color: #888;
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  transition: color 0.2s;
+  box-shadow: none;
+  outline: none;
+  text-shadow: none;
+  display: block;
+}
+
+.start-message.pressable:hover, .start-message.pressable:focus {
+  color: #d72660;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.webcam-video, .captured-photo {
+  z-index: 2;
+  position: relative;
+}
+
+.filter-controls {
+  position: static;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 0.7rem 0 0.5rem 0;
+  margin-top: 1.2rem;
+  z-index: 3;
+  background: none;
+  border-radius: 0;
+}
+
+.filter-btn {
+  font-size: 1.7rem;
+  background: none;
+  border: none;
+  color: #d72660;
+  cursor: pointer;
+  padding: 0 0.7rem;
+  border-radius: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.filter-btn:hover, .filter-btn:focus {
+  background: #f2d0ee;
+  color: #fff;
+}
+
+.filter-name {
+  font-family: 'Covered By Your Grace', cursive;
+  font-size: 1.2rem;
+  color: #d72660;
+  min-width: 90px;
+  text-align: center;
+}
+
+.camera-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.3rem;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.camera-icon svg {
+  transition: stroke 0.2s;
+}
+
+.camera-icon:hover svg path,
+.camera-icon:hover svg circle {
+  stroke: #fff;
+}
+
+.countdown-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5rem;
+  font-family: 'Montserrat', 'Arial Black', Arial, sans-serif;
+  font-weight: bold;
+  color: #fff;
+  z-index: 10;
+  pointer-events: none;
+  user-select: none;
+}
+
+.heart-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pixel-heart-row {
+  margin-top: 7rem;
+}
+
+.captured-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  z-index: 2;
+  position: relative;
+  background: #000;
+}
+
+.photo-strip {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 1.2rem;
+  overflow: hidden;
+}
+
+.photo-strip .captured-photo {
+  width: 32%;
+  height: 90%;
+  object-fit: cover;
+  border-radius: 0.7rem;
+  background: #000;
+}
+
+.countdown-heart {
+  width: 48px;
+  height: 48px;
+  margin: 0 0.5rem;
+  filter: grayscale(1) brightness(1.2) contrast(1.1);
+  opacity: 0.7;
+  transition: filter 0.3s, opacity 0.3s;
+}
+.countdown-heart.filled {
+  filter: none;
+  opacity: 1;
+}
