@@ -1,69 +1,93 @@
-# React + TypeScript + Vite
+# Photobooth App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fun and interactive photobooth application built with React, TypeScript, and Vite. This app simulates a classic photobooth experience with coin insertion, camera capture, and various photo filters.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Coin Insertion**: Interactive coin insertion animation to start the photobooth session
+- **Camera Capture**: Webcam integration for taking photos
+- **Photo Filters**: Multiple filter options including:
+  - None (original)
+  - Grayscale
+  - Sepia
+  - Pink Glow
+  - Contrast+
+  - Blur
+  - Cool (hue rotation)
+- **Countdown Timer**: Visual countdown with heart animations before each photo
+- **Multiple Photos**: Takes up to 3 photos per session
+- **Responsive Design**: Modern UI with smooth animations
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js (version 16 or higher)
+- A modern web browser with camera access
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd photobooth
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install dependencies:
+```bash
+npm install
+```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+3. Start the development server:
+```bash
+npm run dev
+```
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+4. Open your browser and navigate to `http://localhost:5173`
+
+### Building for Production
+
+```bash
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+## Usage
+
+1. **Insert Coin**: Click on the "Insert Coin" button to start the photobooth session
+2. **Start Session**: Click "Okiee, let's start!" to begin
+3. **Choose Filter**: Use the arrow buttons to cycle through different photo filters
+4. **Take Photos**: Click the camera icon to start the countdown and take a photo
+5. **Complete Session**: The app will automatically take 3 photos and complete the session
+
+## Technology Stack
+
+- **React 19** - UI framework
+- **TypeScript** - Type safety
+- **Vite** - Build tool and development server
+- **Tailwind CSS** - Styling
+- **ESLint** - Code linting
+
+## Development
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+### Project Structure
+
+```
+src/
+├── App.tsx          # Main application component
+├── App.css          # Application styles
+├── main.tsx         # Application entry point
+└── index.css        # Global styles
 ```
