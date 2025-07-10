@@ -24,6 +24,8 @@ function App() {
   const [sessionComplete, setSessionComplete] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [folderVisible, setFolderVisible] = useState(false)
+  const [openPressed, setOpenPressed] = useState(false)
 
   const handleInsertCoin = () => {
     setCoinInserted(true)
@@ -113,10 +115,90 @@ function App() {
     }
   }, [photos, isShooting, countdown])
 
+  useEffect(() => {
+    if (sessionComplete) {
+      setTimeout(() => setFolderVisible(true), 100) // slight delay for animation
+    } else {
+      setFolderVisible(false)
+    }
+  }, [sessionComplete])
+
   return (
     <div className="insert-coin-bg">
       {sessionComplete ? (
-        <div className="next-page">Next page placeholder (photos taken!)</div>
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 9999,
+            width: '200px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            pointerEvents: 'none',
+          }}
+        >
+          <div
+            className={folderVisible ? 'folder-animate' : ''}
+            style={{
+              transition: 'transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)',
+              transform: folderVisible ? 'translateY(60px)' : 'translateY(-120px)',
+              pointerEvents: 'auto',
+              position: 'relative',
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <img
+              src="/folder.png"
+              alt="Session Complete"
+              style={{
+                width: '100%',
+                height: 'auto',
+                display: 'block',
+              }}
+            />
+            <button
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                background: 'none',
+                border: 'none', // Remove border
+                borderRadius: '0', // Remove border radius
+                outline: 'none', // Remove outline
+                padding: '0.5rem 1.2rem',
+                fontWeight: 'bold',
+                fontSize: '1.1rem',
+                color: openPressed ? '#ff69b4' : '#d72660',
+                cursor: 'pointer',
+                boxShadow: 'none',
+                pointerEvents: 'auto',
+                transition: 'color 0.3s',
+              }}
+              onClick={() => setOpenPressed(true)}
+            >
+              Open
+            </button>
+            {openPressed && (
+              <div className="hearts-burst">
+                {[0,1,2].map(i => (
+                  <img
+                    key={i}
+                    src="/heart.png"
+                    alt="heart"
+                    className={`burst-heart burst-heart-${i}`}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
       ) : (
         <div className="center-column">
           {!coinInserted && (
